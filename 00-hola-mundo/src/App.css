@@ -3,6 +3,7 @@
   align-items: center;
   color: #FFF;
   font-size: .8rem;
+  justify-content: space-between;
   
 }
 
@@ -38,6 +39,10 @@
 
 
 
-
+.appComponent{
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
 
 
