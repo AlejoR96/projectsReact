@@ -1,25 +1,14 @@
 import "./App.css";
-export function App() {
-  return (
-    <article className="x-followCard">
-      <header className="x-followCard-header">
-        <img
-          className="x-followCard-avatar"
-          alt="avatarSG"
-          src="https://unavatar.io/soysantoguerrero"
-        />
-        <div className="x-followCard-info">
-          <strong>Alejandro Rivera</strong>
-          <span className="x-followCard-infoUserName">@soysantoguerrero
-          </span>
-        </div>
-      </header>
+import { XFollowCard } from "./XFollowcard";
 
-      <aside>
-        <button className="x-buttonFollow">
-          Seguir
-          </button>
-      </aside>
-    </article>
+export function App() {
+  const addAt = (userName) => `@${userName}`
+  return (
+    <section className="appComponent">
+    <XFollowCard isFollowing userName="Soysantoguerrero" name="Alejandro Rivera"/>
+    <XFollowCard isFollowing userName="laurajperezz" name="Laura Perez"/>
+    <XFollowCard isFollowing userName="_valentinazuluaga_" name="Valentina Zuluaga"/>
+    </section>
+  
   );
 }
