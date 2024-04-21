@@ -1,8 +1,8 @@
 import { useState } from "react"
 
-export function XFollowCard ({children, userName, name}) {
+export function XFollowCard ({children, userName, initialIsFollowing}) {
   
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
   
   const text = isFollowing ? 'Siguiendo' : 'Seguir'
   const buttonClassName = isFollowing 
@@ -20,7 +20,7 @@ export function XFollowCard ({children, userName, name}) {
         <img
           className="x-followCard-avatar"
           alt="avatarSG"
-          src={`https://unavatar.io/${userName}`}
+          src={`https://unavatar.io/instagram/${userName}`}
         />
         <div className="x-followCard-info">
          <strong>{children}</strong> 
@@ -32,7 +32,8 @@ export function XFollowCard ({children, userName, name}) {
 
       <aside>
         <button className={buttonClassName} onClick={handleClick}>
-          {text}
+          <span className="x-followCard-text">{text}</span> 
+          <span className="x-followCard-stopFollow">Dejar de seguir</span>
         </button>
       </aside>
     </article>
