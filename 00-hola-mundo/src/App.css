@@ -30,14 +30,29 @@
 }
 
 .x-buttonFollow{
+  cursor: pointer;
  margin-left: 16px;
  border: 0;
  border-radius: 999px;
  padding: 6px 16px;
  font-weight: bold;
+ border: 1px solid #000;
+ transition: .3s ease background-color;
 }
 
 
+.x-buttonFollow.is-following{
+  background-color:red ;
+  
+ }
+
+.x-buttonFollow:hover{
+  background-color: #09f;
+}
+
+.x-buttonFollow.is-following:hover{
+  border: 1px solid red;
+ }
 
 .appComponent{
  display: flex;
