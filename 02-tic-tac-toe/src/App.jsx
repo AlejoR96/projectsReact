@@ -23,6 +23,9 @@ const Square = ({children, isSelected, updateBoard, index}) => {
  )
 }
 
+
+
+
 const WINNER_COMBOS = [
   [0,1,3],
   [3,4,5],
@@ -50,6 +53,7 @@ function App() {
   // Paramentro para validar cual es el ganador o perdedor 
 
   const checkWinner = (boardToCheck) => {
+
     for(const combo of WINNER_COMBOS){
       const [a, b, c] = combo
       if(
@@ -67,7 +71,7 @@ function App() {
 
   const updateBoard = (index) => {
     // Condicional para no sobreescribir si ya se tiene algo
-    if(board[index]) return 
+    if(board[index] || winner) return 
     // Actualizar el tablero 
     const newBoard = [...board];
     newBoard[index] = turn
@@ -75,6 +79,11 @@ function App() {
     // Cambiar el tablero 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+    // Revisar si hay ganador 
+    const newWinner = checkWinner(newBoard)
+      if(newWinner) {
+        setWinner(newWinner)
+      }
   }
 
   // Detectar el gandor  min 32:08
@@ -107,7 +116,31 @@ function App() {
        {TURNS.O}
       </Square>
     </section>
-  </main>
+    {
+      // Modal para indicar quien ha ganado
+      winner  !== null && (
+        <section className='winner'>
+          <div className='text'>
+            <h2>
+              {
+                winner === false
+                ? `Empate`
+                : `Gano: `
+              }
+            </h2>
+            
+            <header className='win'>
+              {winner && <square>{winner}</square>}
+            </header>
+            
+            <footer>
+              <button> Empezar de nuevo</button>
+            </footer>
+          </div>
+        </section>
+      )
+    }
+</main>
   
  );
 }
